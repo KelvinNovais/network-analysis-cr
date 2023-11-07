@@ -1,6 +1,9 @@
 library(igraph)
 
 # GLOBAL VARIABLES
+tk <- T
+
+# PATHS
 raw_data_path <- "./csv/raw-data.csv"
 nodes_template_path <- "./csv/nodes-template.csv"
 nodes_path <- "./csv/nodes.csv"
@@ -10,16 +13,17 @@ edges_path <- "./csv/edges.csv"
 # TODO: improve
 # verificar cada linha da categora; quando houver mudança de categoria, marcar como início; gerar matiz automaticamente
 # RANGE OF CATEGORIES NUMBERS
-bar <- 1			# age_range
-bsk <- 7		  # skin_color
-bg  <- 13		  # gender
-be  <- 16 		# education
-br  <- 19	  	# role
-bpm <- 25	  	# preferred_mg
-bum <- 45	  	# unpreferred_mg
-br  <- 65	  	# residents
-bi  <- 70     # income
+bar <- 1      # age_range
+bsk <- 7      # skin_color
+bg  <- 13     # gender
+be  <- 17     # education
+br  <- 18     # role
+bpm <- 26     # preferred_mg
+bum <- 46     # unpreferred_mg
+br  <- 66     # residents
+bi  <- 71     # income
 
+# a matrix that points the beginning and the end of each category, on 1st and 2nd column respectively
 id_key_ranges <- matrix(
   data = c(
     bar,bsk-1,			# age_range
@@ -30,7 +34,7 @@ id_key_ranges <- matrix(
     bpm,bum-1,	   	# preferred_mg
     bum,br-1,		    # unpreferred_mg
     br,bi-1,	     	# residents
-    bi,74           # income
+    bi,75           # income
   ),
   nrow = 9,
   ncol = 2,
@@ -38,6 +42,7 @@ id_key_ranges <- matrix(
 )
 
 treat_data <- function() {
+  # Copy templates
   file.copy(
     from = edges_template_path,
     to = edges_path,
@@ -50,6 +55,7 @@ treat_data <- function() {
     overwrite = T
   )
   
+  # Read csv files
   raw_data <- read.csv(
     file = raw_data_path,
     header = F,
@@ -70,14 +76,22 @@ treat_data <- function() {
   
   if (id_key_ranges[nrow(id_key_ranges), ncol(id_key_ranges)] != nrow(nodes_df)) {
     message("O número de categorias no arquivo 'edges.csv' difere do listado no código!")
-    # TODO: exit
+    quit(status = 1)
   }
   
+  # A data frame that will append nodes soon
   nodes_to_append <- data.frame()
-  # TREAT EDGES  
+  
+  # TREAT EDGES:
+  # generate a incidence matrix
   for (row in 1:nrow(raw_data)) {
+    # Add the name of the edge on the first column
     edges_df[row, 1] <- sprintf("U%03d", row)
-    nodes_to_append <- rbind(nodes_to_append, c(sprintf("U%03d", row), NA, 12, NA, NA))
+    
+    # Generate node to append the data frame; 12 refers to a category that will be used to set vertex color
+    nodes_to_append <- rbind(nodes_to_append, c(sprintf("U%03d", row), NA, 10, NA, NA))
+    
+    # for each value on the raw_data, insert 1 for pointede categories and 0 for non pointed categories
     for (col in 3:11) {
       for (x in id_key_ranges[col-2, 1]:id_key_ranges[col-2, 2]) {
         if (raw_data[row, col] == nodes_df[x, 2]) {
@@ -89,7 +103,8 @@ treat_data <- function() {
     }
   }
   
-  # TREAT NODES
+  # TREAT NODES:
+  # append the table with previous generated values
   write.table(
     nodes_to_append,  
     file = nodes_path, 
@@ -170,13 +185,13 @@ treat_data_old <- function() {
   # TREATING NODES
   nodes_df <- data.frame(id=people)
   write.table(nodes_df,  
-   file=nodes_path, 
-   append = T, 
-   sep='\n', 
-   row.names=F, 
-   col.names=F
+              file=nodes_path, 
+              append = T, 
+              sep='\n', 
+              row.names=F, 
+              col.names=F
   )
-
+  
   # discard unused
   rm(edges_df)
   rm(raw_data)
@@ -187,75 +202,135 @@ treat_data_old <- function() {
 }
 
 main <- function() {
-	message("Starting...")
-	message("Coded by Kelvin Novais - 2023 <https://github.com/KelvinNovais>")
-	message("No license code, feel free to use!")
-	
-	#set.seed(1234)
-
-  # Color palettes
-  nodes_colors <- rainbow(12, alpha=1)
-  #shadow_colors <- rainbow(length(columns.c), alpha=.5)
-	
-	treat_data()
-	
-	nodes <- read.csv(nodes_path, header=T, as.is=T)
-	links <- read.csv(edges_path, header=T, row.names=1)
-	
-	links <- as.matrix(links)
-	
-	# A geração da tabela de edges está invertida (linhas por colunas),
-	# mas aplicando a transposta corrige o prooblema
-	links <- t(links)
-	
-	net <- graph_from_incidence_matrix(
-	  links,
-	  directed = F
-	)
-	
-	lc <- layout_in_circle(net)
-	
-	# Count the number of degree for each node:
-	deg <- degree(net, mode = "in")
-	for (i in id_key_ranges[nrow(id_key_ranges), ncol(id_key_ranges)]:length(deg)) {
-	  deg[i] <- 2
-	}
-	
-  plot(
-    net,
-    layout = lc,
-    vertex.label = nodes$category,
-    vertex.label.color = "black",
-    # vertex.label.degree = pi,
-    vertex.label.dist = -1,
-    vertex.size = (deg+1)*2,
-    vertex.color = nodes_colors[nodes$category.type],
-    
-    # edge.curved=0.2,
-    edge.arrow.size=0.1,
-    
-    main = "Futuro título",
-    sub = "Possível subtítulo",
+  message("Starting...")
+  message("Coded by Kelvin Novais - 2023 <https://github.com/KelvinNovais>")
+  message("No license code, feel free to use!")
+  
+  set.seed(1234)
+  
+  # Color palette
+  nodes_colors <- rainbow(10, alpha=0.7)
+  
+  treat_data()
+  
+  # File format to save
+  svg(
+    width = 15,
+    height = 15
   )
-  # legend(
-  #   x=-1.5,
-  #   # y=-1.1, 
-  #   c(
-  #    "Fixa etária", "Etnia", "Sexo", "Escolaridade",
-  #     "Curso/função", "Gênero preferido", "Gẽnero não preferido", "Residentes", "Salário"
-  #   ), 
-  #   pch=21,
-  #   col="#777777", 
-  #   pt.bg=nodes_colors[2:12],
-  #   pt.cex=2, cex=.8, 
-  #   bty="n", 
-  #   ncol=1
-  # )
-  	
-	message("Finishing...")
+  
+  nodes <- read.csv(nodes_path, header = T, as.is = T)
+  links <- read.csv(edges_path, header = T, row.names = 1)
+  
+  links <- as.matrix(links)
+  
+  # The generated edges csv is a inverted matrix, so just transpose it
+  links <- t(links)
+  
+  net1 <- graph_from_incidence_matrix(
+    links,
+    directed = T,
+    mode = "in" # vertexes go from "U" to "c"
+  )
+  
+  # Count the number of degree for each node:
+  deg1 <- degree(net1, mode = "in")
+  
+  # Setting some layouts
+  lc <- layout_in_circle(net1)
+  
+  plot(
+    net1,
+    
+    layout = lc,
+    
+    vertex.label = nodes$vertex.label,
+    vertex.label.color = "black",
+    vertex.label.dist = 1.5,
+    vertex.size = (deg1 + 1.5) * 1.05,
+    vertex.color = nodes_colors[nodes$category.type],
+    rescale = F,
+    margin = 0,
+    
+    #edge.curved=0.2,
+    edge.arrow.size = 0.1,
+    
+    main = "Grafo geral",
+    #sub = "Subtítulo",
+  )
+  
+  legend(
+    x = "bottomright",
+    legend = c(
+      "Faixa etária",
+      "Raça ou cor",
+      "Sexo",
+      "Escolaridade",
+      "Curso/Função",
+      "Gênero mais consumido",
+      "Gênero menos consumido",
+      "Habitantes", 
+      "Renda"
+    ),
+    fill = nodes_colors[2:11],
+    title = "Legenda",
+    horiz = F
+  )
+  
+  if (tk) {
+    id_tkplot_1 <- tkplot(
+      net1,
+      
+      # canvas.width = 450,
+      # canvas.height = 450,
+      
+      layout = lc,
+      
+      vertex.label = nodes$vertex.label,
+      vertex.label.color = "black",
+      vertex.label.dist = 1.2,
+      vertex.size = (deg1 + 1.5) * 1.05,
+      vertex.color = nodes_colors[nodes$category.type],
+      rescale = F,
+      margin = 0,
+      
+      edge.curved = 0.3,
+      edge.arrow.size = 0.7,
+      
+      main = "Grafo geral",
+      #sub = "Subtítulo",
+    )
+    
+    legend(
+      x = "bottomright",
+      legend = c(
+        "Faixa etária",
+        "Raça ou cor",
+        "Sexo",
+        "Escolaridade",
+        "Curso/Função",
+        "Gênero mais consumido",
+        "Gênero menos consumido",
+        "Habitantes", 
+        "Renda"
+      ),
+      fill = nodes_colors[1:9],
+      title = "Legenda",
+      horiz = F
+    )
+  }
+  
+  # Close the graphics device
+  dev.off()
+  
+  message("Finishing...")
 }
 
 main()
+
+# Plot:     https://r-coder.com/save-plot-r/
+# Tkplot:   https://r.igraph.org/reference/tkplot.html
+# Legend:   https://r-coder.com/add-legend-r/
 
 # https://robwiederstein.github.io/network_analysis/igraph.html
 # https://r.igraph.org/reference/
@@ -263,4 +338,3 @@ main()
 
 # edge    ==    link
 # vertex  ==    node
-

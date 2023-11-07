@@ -6,7 +6,7 @@ This is network analysis with R and iGraph. The data was colected form a form.
 
 ## Run the code
 This is a simple guide for my system, Fedora Linux.
-bash```
+```bash
 # Istallation of R
 sudo dnf install R
 
@@ -14,6 +14,7 @@ sudo dnf install R
 sudo R
 # On the console, run:
 install.packages("igraph")
+q()
 
 # Run script
 Rscript ./main.R

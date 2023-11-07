@@ -1,6 +1,11 @@
 *.csv
 *.pdf
+*.svg
+*.eps
 
 .Rproj.user/
 .RData
 .Rhistory
+
+!edges-template.csv
+!nodes-template.csv
