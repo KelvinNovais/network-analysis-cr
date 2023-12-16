@@ -2,6 +2,7 @@
 *.pdf
 *.svg
 *.eps
+output.txt
 
 .Rproj.user/
 .RData

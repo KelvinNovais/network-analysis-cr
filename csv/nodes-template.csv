@@ -11,67 +11,64 @@ c009,Branco,2,skin_color,Br,Branco
 c010,Indígena,2,skin_color,Ind,Indígena
 c011,Amarelo,2,skin_color,Am,Amarelo
 c012,Prefiro não informar ou não sei,2,skin_color,PNINS,Prefiro não informar ou não sei
-c013,Homem cis,3,gender,H,Homem cis
-c014,Mulher cis,3,gender,M,Mulher cis
-c015,Homem trans,3,gender,HT,Homem trans
-c016,Não binário,3,gender,NB,Não binário
-c017,Prefiro não informar ou não sei,3,gender,PNINS,Prefiro não informar ou não sei
-c018,Somente escola pública,4,education,EPub,Somente escola pública
-c019,Somente escola privada,4,education,EPriv,Somente escola privada
-c020,Parcialmente pública e parcialmente privada,4,education,PPPP,Parcialmente pública e parcialmente privada
-c021,Bacharelado em Ciência e Tecnologia (BC&T),5,role,BC&T,Bacharelado em Ciência e Tecnologia (BC&T)
-c022,Bacharelado em Ciências e Humanidades (BC&H),5,role,BC&H,Bacharelado em Ciências e Humanidades (BC&H)
-c023,Licenciatura em Ciências Naturais e Exatas (LCNE),5,role,LCNE,Licenciatura em Ciências Naturais e Exatas (LCNE)
-c024,Licenciatura em Ciências Humanas (LCH),5,role,LCH,Licenciatura em Ciências Humanas (LCH)
-c025,Pós-graduação,5,role,PG,Pós-graduação
-c026,Colaboradores/Docentes,5,role,CD,Colaboradores/Docentes
-c027,Rock,6,preferred_mg,Rock,Rock
-c028,Pop,6,preferred_mg,Pop,Pop
-c029,Rap,6,preferred_mg,Rap,Rap
-c030,Funk,6,preferred_mg,Funk,Funk
-c031,Clássico (Erudito),6,preferred_mg,Clássico,Clássico (Erudito)
-c032,Metal,6,preferred_mg,Metal,Metal
-c033,Jazz,6,preferred_mg,Jazz,Jazz
-c034,Eletrônica,6,preferred_mg,Eletrônica,Eletrônica
-c035,Sertanejo,6,preferred_mg,Sertanejo,Sertanejo
-c036,MPB,6,preferred_mg,MPB,MPB
-c037,Pagode,6,preferred_mg,Pagode,Pagode
-c038,Gospel,6,preferred_mg,Gospel,Gospel
-c039,Forró,6,preferred_mg,Forró,Forró
-c040,Punk,6,preferred_mg,Punk,Punk
-c041,Kpop,6,preferred_mg,Kpop,Kpop
-c042,Country,6,preferred_mg,Country,Country
-c043,Hip-Hop,6,preferred_mg,Hip-Hop,Hip-Hop
-c044,Reggaeton,6,preferred_mg,Reggaeton,Reggaeton
-c045,Indie,6,preferred_mg,Indie,Indie
-c046,R&B,6,preferred_mg,R&B,R&B
-c047,Rock,7,unprefered_mg,Rock,Rock
-c048,Pop,7,unprefered_mg,Pop,Pop
-c049,Rap,7,unprefered_mg,Rap,Rap
-c050,Funk,7,unprefered_mg,Funk,Funk
-c051,Clássico (Erudito),7,unprefered_mg,Clássico,Clássico (Erudito)
-c052,Metal,7,unprefered_mg,Metal,Metal
-c053,Jazz,7,unprefered_mg,Jazz,Jazz
-c054,Eletrônica,7,unprefered_mg,Eletrônica,Eletrônica
-c055,Sertanejo,7,unprefered_mg,Sertanejo,Sertanejo
-c056,MPB,7,unprefered_mg,MPB,MPB
-c057,Pagode,7,unprefered_mg,Pagode,Pagode
-c058,Gospel,7,unprefered_mg,Gospel,Gospel
-c059,Forró,7,unprefered_mg,Forró,Forró
-c060,Punk,7,unprefered_mg,Punk,Punk
-c061,Kpop,7,unprefered_mg,Kpop,Kpop
-c062,Country,7,unprefered_mg,Country,Country
-c063,Hip-Hop,7,unprefered_mg,Hip-Hop,Hip-Hop
-c064,Reggaeton,7,unprefered_mg,Reggaeton,Reggaeton
-c065,Indie,7,unprefered_mg,Indie,Indie
-c066,R&B,7,unprefered_mg,R&B,R&B
-c067,1 - 2,8,residents,1 - 2,1 ou 2 indivíduos
-c068,3 - 4,8,residents,3 - 4,3 ou 4 indivíduos
-c069,5 - 6,8,residents,5 - 6,5 ou 6 indivíduos
-c070,7 ou mais,8,residents,> 7,7 ou mais indivíduos
-c071,Prefiro não informar,8,residents,PNI,Prefiro não informar
-c072,"Menos de R$1.320,00",9,income,A,"Menos de R$1.320,00"
-c073,"Entre R$1.320,00 e R$3.960,00",9,income,B,"Entre R$1.320,00 e R$3.960,00"
-c074,"Entre 3.960,00 e R$6.600,00",9,income,C,"Entre 3.960,00 e R$6.600,00"
-c075,"Entre R$6.600,00 e R$9.240,00",9,income,D,"Entre R$6.600,00 e R$9.240,00"
-c076,"Mais de R$9.240,00",9,income,E,"Mais de R$9.240,00"
+c013,Homem cis,3,gender,H,Homem
+c014,Mulher cis,3,gender,M,Mulher
+c015,Somente escola pública,4,education,EPub,Somente escola pública
+c016,Somente escola privada,4,education,EPriv,Somente escola privada
+c017,Parcialmente pública e parcialmente privada,4,education,PPPP,Parcialmente pública e parcialmente privada
+c018,Bacharelado em Ciência e Tecnologia (BC&T),5,role,BC&T,Bacharelado em Ciência e Tecnologia (BC&T)
+c019,Bacharelado em Ciências e Humanidades (BC&H),5,role,BC&H,Bacharelado em Ciências e Humanidades (BC&H)
+c020,Licenciatura em Ciências Naturais e Exatas (LCNE),5,role,LCNE,Licenciatura em Ciências Naturais e Exatas (LCNE)
+c021,Licenciatura em Ciências Humanas (LCH),5,role,LCH,Licenciatura em Ciências Humanas (LCH)
+c022,Pós-graduação,5,role,PG,Pós-graduação
+c023,Colaboradores/Docentes,5,role,CD,Colaboradores/Docentes
+c024,Rock,6,preferred_mg,Rock,Rock
+c025,Pop,6,preferred_mg,Pop,Pop
+c026,Rap,6,preferred_mg,Rap,Rap
+c027,Funk,6,preferred_mg,Funk,Funk
+c028,Clássico (Erudito),6,preferred_mg,Clássico,Clássico (Erudito)
+c029,Metal,6,preferred_mg,Metal,Metal
+c030,Jazz,6,preferred_mg,Jazz,Jazz
+c031,Eletrônica,6,preferred_mg,Eletrônica,Eletrônica
+c032,Sertanejo,6,preferred_mg,Sertanejo,Sertanejo
+c033,MPB,6,preferred_mg,MPB,MPB
+c034,Pagode,6,preferred_mg,Pagode,Pagode
+c035,Gospel,6,preferred_mg,Gospel,Gospel
+c036,Forró,6,preferred_mg,Forró,Forró
+c037,Punk,6,preferred_mg,Punk,Punk
+c038,Kpop,6,preferred_mg,Kpop,Kpop
+c039,Country,6,preferred_mg,Country,Country
+c040,Hip-Hop,6,preferred_mg,Hip-Hop,Hip-Hop
+c041,Reggaeton,6,preferred_mg,Reggaeton,Reggaeton
+c042,Indie,6,preferred_mg,Indie,Indie
+c043,R&B,6,preferred_mg,R&B,R&B
+c044,Rock,7,unprefered_mg,Rock,Rock
+c045,Pop,7,unprefered_mg,Pop,Pop
+c046,Rap,7,unprefered_mg,Rap,Rap
+c047,Funk,7,unprefered_mg,Funk,Funk
+c048,Clássico (Erudito),7,unprefered_mg,Clássico,Clássico (Erudito)
+c049,Metal,7,unprefered_mg,Metal,Metal
+c050,Jazz,7,unprefered_mg,Jazz,Jazz
+c051,Eletrônica,7,unprefered_mg,Eletrônica,Eletrônica
+c052,Sertanejo,7,unprefered_mg,Sertanejo,Sertanejo
+c053,MPB,7,unprefered_mg,MPB,MPB
+c054,Pagode,7,unprefered_mg,Pagode,Pagode
+c055,Gospel,7,unprefered_mg,Gospel,Gospel
+c056,Forró,7,unprefered_mg,Forró,Forró
+c057,Punk,7,unprefered_mg,Punk,Punk
+c058,Kpop,7,unprefered_mg,Kpop,Kpop
+c059,Country,7,unprefered_mg,Country,Country
+c060,Hip-Hop,7,unprefered_mg,Hip-Hop,Hip-Hop
+c061,Reggaeton,7,unprefered_mg,Reggaeton,Reggaeton
+c062,Indie,7,unprefered_mg,Indie,Indie
+c063,R&B,7,unprefered_mg,R&B,R&B
+c064,1 - 2,8,residents,1 - 2,1 ou 2 indivíduos
+c065,3 - 4,8,residents,3 - 4,3 ou 4 indivíduos
+c066,5 - 6,8,residents,5 - 6,5 ou 6 indivíduos
+c067,7 ou mais,8,residents,> 7,7 ou mais indivíduos
+c068,Prefiro não informar,8,residents,PNI,Prefiro não informar
+c069,"Menos de R$1.320,00",9,income,A,"Menos de R$1.320,00"
+c070,"Entre R$1.320,00 e R$3.960,00",9,income,B,"Entre R$1.320,00 e R$3.960,00"
+c071,"Entre 3.960,00 e R$6.600,00",9,income,C,"Entre 3.960,00 e R$6.600,00"
+c072,"Entre R$6.600,00 e R$9.240,00",9,income,D,"Entre R$6.600,00 e R$9.240,00"
+c073,"Mais de R$9.240,00",9,income,E,"Mais de R$9.240,00"
